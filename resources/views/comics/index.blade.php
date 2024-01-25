@@ -10,7 +10,9 @@
             @foreach ($items as $element)
                 <div class="col-4">
                     <div class="card my-3 HeigthBodyCard" style="width: 18rem;">
-                        <img class="StyleImgCard" src="{{ $element->thumb }}" class="card-img-top" alt="{{ $element->title }}">
+                        <div class="HeigthImgCardContainer">
+                            <img class="StyleImgCard img-fluid" src="{{ $element->thumb }}" class="card-img-top" alt="{{ $element->title }}">
+                        </div>
                         <div class="card-body">
                             <div class="d-flex justify-content-center">
                                 <h5 class="card-title">{{ $element->title }}</h5>
