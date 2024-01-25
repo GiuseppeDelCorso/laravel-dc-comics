@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+
+        $items = Comics::all();
+        return view("comics.index", compact("items"));
     }
 
     /**
@@ -20,7 +20,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        return view("comics.create");
     }
 
     /**
@@ -28,15 +28,25 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $comics = new Comics();
+        $comics->title = $data["title"];
+        $comics->description = $data["description"];
+        $comics->thumb = $data["thumb"];
+        $comics->price = $data["price"];
+        $comics->series = $data["series"];
+        $comics->sale_date = $data["sale_date"];
+        $comics->type = $data["type"];
+        $comics->save();
+
+        return redirect()->route('comics.show', $comics->id);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $comics = Comics::find($id);
+        return view("comics.show", compact("comics"));
     }
 
     /**
