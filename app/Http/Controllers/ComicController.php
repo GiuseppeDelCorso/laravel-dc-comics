@@ -43,8 +43,9 @@ class ComicController extends Controller
         return redirect()->route('comics.show', $comics->id);
     }
 
-    public function show(Comics $comics)
+    public function show(string $id)
     {
+        $comics = Comics::find($id);
         return view("comics.show", compact("comics"));
     }
 
@@ -63,8 +64,7 @@ class ComicController extends Controller
     {
         $data = $request->all();
         $comics->update($data);
-
-        return redirect()->route('comics.show', $comics->id);
+        return redirect()->route('comics.show', $comcis->id);
     }
 
     /**
