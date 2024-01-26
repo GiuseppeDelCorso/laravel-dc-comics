@@ -18,6 +18,5 @@ class Comics extends Model
         "sale_date",
         "type",
         "description",
-
     ];
 }

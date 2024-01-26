@@ -25,6 +25,13 @@
                             </div>
                             <div class="d-flex justify-content-center">
                                 <a href="{{ route('comics.show', $element->id) }}" class="btn btn-primary">Mostra dettagli</a>
+
+
+                                <form action="{{ route('comics.destroy', $element->id)}}" method="POST" >
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Cancella" class="btn btn-danger">
+                                </form>
                             </div>
                         </div>
                     </div>

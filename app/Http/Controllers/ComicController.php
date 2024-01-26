@@ -43,35 +43,36 @@ class ComicController extends Controller
         return redirect()->route('comics.show', $comics->id);
     }
 
-    public function show(string $id)
+    public function show(Comics $comic)
     {
-        $comics = Comics::find($id);
-        return view("comics.show", compact("comics"));
+
+        return view("comics.show", compact("comic"));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comics $comics)
+    public function edit(Comics $comic)
     {
-        return view("comics.edit", compact("comics"));
+        return view("comics.edit", compact("comic"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comics $comics)
+    public function update(Request $request, Comics $comic)
     {
         $data = $request->all();
-        $comics->update($data);
-        return redirect()->route('comics.show', $comcis->id);
+        $comic->update($data);
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comics $comic)
     {
-        //
+        $comic->delete();
+        return redirect()->route('comics.index');
     }
 }
