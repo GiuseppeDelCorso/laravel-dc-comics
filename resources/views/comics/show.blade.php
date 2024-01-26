@@ -11,5 +11,8 @@
         <div class="row">
             <p>{{ $comics->description }}</p>
         </div>
+       <div class="d-flex justify-content-center">
+            <a href="{{ route('comics.edit', $comics->id) }}" class="btn btn-primary">Modifica il Fumetto</a>
+        </div> >
     </div>
 @endsection
